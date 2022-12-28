@@ -1,21 +1,27 @@
 <Query Kind="Expression">
   <Connection>
-    <ID>8fc2abf7-9f71-4805-920b-629e3b7f5264</ID>
+    <ID>54bf9502-9daf-4093-88e8-7177c12aaaaa</ID>
+    <NamingService>2</NamingService>
     <Persist>true</Persist>
-    <Server>(localdb)\MSSQLLocalDB</Server>
-    <NoPluralization>true</NoPluralization>
-    <NoCapitalization>true</NoCapitalization>
-    <Database>NorthWind</Database>
+    <Driver Assembly="(internal)" PublicKeyToken="no-strong-name">LINQPad.Drivers.EFCore.DynamicDriver</Driver>
+    <AttachFileName>&lt;ApplicationData&gt;\LINQPad\ChinookDemoDb.sqlite</AttachFileName>
+    <DisplayName>Demo database (SQLite)</DisplayName>
+    <DriverData>
+      <PreserveNumeric1>true</PreserveNumeric1>
+      <EFProvider>Microsoft.EntityFrameworkCore.Sqlite</EFProvider>
+      <MapSQLiteDateTimes>true</MapSQLiteDateTimes>
+      <MapSQLiteBooleans>true</MapSQLiteBooleans>
+    </DriverData>
   </Connection>
   <Namespace>LINQPad.FSharpExtensions</Namespace>
 </Query>
 
 //simple table call
-Categories
+Albums
 
 //Table Call with where
-Categories.Where(c => c.CategoryID > 2)
+Albums.Where(c => c.ArtistId == 3)
 
 //Projection
-Categories.Where(c => c.CategoryID == 2)
-.Select(c => new { c, c.Products, c.Products.First().OrderDetails })
+Albums.Where(c => c.ArtistId == 3)
+.Select(c => new { c, c.Tracks, c.Artist })
